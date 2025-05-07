@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as React from "react";
+
 // 顶部容器
 const Main = styled.header`
     padding-top: 0;

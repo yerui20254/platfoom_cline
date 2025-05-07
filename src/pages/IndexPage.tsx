@@ -6,8 +6,6 @@ const TopNav = styled.header`
     height: 200px;
     display: flex;
     align-items: center;
-    border-bottom:1px solid grey;
-
 `;
 
 // logo 样式
@@ -22,9 +20,6 @@ const Title = styled.h1`
     color: #40424b;
     margin-left: 17px;
     font-weight: bold;
-    padding-left:10px;
-    border-left: 2px solid #000; /* 或者 border-right */
-    
 `;
 
 const TopNavBar: React.FC = () => {

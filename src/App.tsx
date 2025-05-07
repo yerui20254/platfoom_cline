@@ -1,4 +1,3 @@
-
 import './app.css'
 import TopNavBar from "./components/TopNavBar";
 import LoginMainContent from "./components/LoginMainContent.tsx";
@@ -6,13 +5,13 @@ import LoginMainContent from "./components/LoginMainContent.tsx";
 
 
 function App() {
-  return (
+    return (
 
-      <div>
-          <TopNavBar />
-          <LoginMainContent />
-      </div>
-  )
+        <div>
+            <TopNavBar />
+            <LoginMainContent />
+        </div>
+    )
 }
 
 export default App
