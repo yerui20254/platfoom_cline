@@ -43,10 +43,10 @@ height: 70vh;
     }
 `
 
-const Home: React.FC = () => {
+const LoginPage: React.FC = () => {
   const navigate = useNavigate()
     const handleNavigate = () => {
-        navigate('/page2')
+        navigate('/page3')
     }
   return (
     <div>
@@ -70,4 +70,4 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home
+export default LoginPage

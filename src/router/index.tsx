@@ -1,16 +1,30 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Home from '../pages/Home'
-import Page2 from '../pages/page2'
+import LoginPage from '../pages/LoginPage.tsx'
+import PageDetail from "../pages/PageDetail.tsx";
+import ContentIndexPage from "../pages/indexPage.tsx"
+import Detail from "../pages/detail.tsx"
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
+    element: <LoginPage />,
   },
   {
     path: '/page2',
-    element: <Page2 />,
+    element: <ContentIndexPage />,
+    children: [
+      {
+        path: 'details',
+        element: <Detail />,
+      }
+    ]
   },
+  {
+    path: '/page3',
+    element: <PageDetail />,
+    
+  },
+
 ])
 
 export default router
