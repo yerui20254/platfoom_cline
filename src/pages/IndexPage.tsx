@@ -1,39 +1,14 @@
 import React from 'react'
-import styled from "styled-components";
-import Sidebar from '../components/Sidebar.tsx'
 import { Outlet } from "react-router";
+import LayOut from './layOut.tsx';
 
-
-const Wrapper=styled.main`
-   width: 100%;
-   height: 100%;
-   border: 1px solid red;
-   & aside{width: 10vw;border: 1px solid red}
-   & main{border: 1px solid red,}
- `
-const Wrapper2=styled.div`
- display: flex;
-  flex: 1;
-`
-const TopNav=styled.div`
-width: 100%;
-height: 80px;
-border: 1px solid red`
 
 
 const ContentIndexPage: React.FC = () => {
   return (
-      <Wrapper>
-        <TopNav></TopNav>
-        <Wrapper2>
-        <aside>
-          <Sidebar />
-        </aside>
-        <main>
-          <Outlet></Outlet>
-        </main>
-        </Wrapper2>
-      </Wrapper>
+      <LayOut>
+        <Outlet></Outlet>
+      </LayOut>
   )
 }
 
