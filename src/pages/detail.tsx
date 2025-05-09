@@ -2,6 +2,7 @@ import { Card } from 'antd';
 import styled from "styled-components"
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
+import AllAbility from '../components/allability'
 
 const StyledCard = styled(Card)` 
   height: 280px;
@@ -18,7 +19,7 @@ const CardContainer = styled.div`
   justify-content: space-between;
   width: 100%;
 `;
-const TabOne = () => <div>这是 Tab 1 的内容</div>;
+const TabOne = () => <AllAbility />;
 const TabTwo = () => <div>这是 Tab 2 的内容</div>;
 
 const items: TabsProps['items'] = [
