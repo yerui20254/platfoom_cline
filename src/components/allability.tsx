@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
+import { Input,Card, Row, Col } from 'antd';
+import type { GetProps } from 'antd';
+type SearchProps = GetProps<typeof Input.Search>;
+
+
 
 const Container = styled.div`
    display: flex;
@@ -16,6 +21,9 @@ const Sidebar = styled.div`
 const Content = styled.div`
   flex: 1;
   padding: 20px;
+  & .ant-input-group {
+    width: 30%;
+  }
 `;
 
 const Section = styled.div`
@@ -27,7 +35,10 @@ const Section = styled.div`
     min-width: 300px;
   }
 `;
- 
+//input相关
+const { Search } = Input;
+//搜索触发的函数
+const onSearch: SearchProps['onSearch'] = (value, _e, info) => console.log(info?.source, value);
 const AllAbility = () => {  
   return(
      <Container>
@@ -36,12 +47,10 @@ const AllAbility = () => {
         <ToggleButtonGroup />
       </Section>
       </Sidebar>
-
-      
-
       <Content>
         <h3>筛选结果</h3>
-    
+        <Search placeholder="input search text" onSearch={onSearch} enterButton />
+        <CapabilityCards />
       </Content>
 
     </Container>
@@ -69,7 +78,6 @@ const AllAbility = () => {
           options: ['不限', '直播', '电商', '生服', '安全', '搜索', '抖音生态', '地理位置', '垂直'],
         },
       ];
-    
     
     const ToggleButtonGroup = () => {
       // 用于记录每一组的当前选中项（key 为 title，值为选中项或 null）
@@ -116,5 +124,58 @@ const AllAbility = () => {
       </div>
       );
     };
-
+    const capabilities = [
+        {
+          description: 'xxxxxxxxxxxxx',
+          toolType: '插件',
+          taskType: '文本',
+          capabilityDirection: '文本理解',
+          businessDirection: '电商',
+          providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+        },
+        {
+          description: 'xxxxxxxxxxxxx',
+          toolType: '模板',
+          taskType: '图片',
+          capabilityDirection: '图像识别',
+          businessDirection: '安全',
+          providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+        },
+        {
+          description: 'xxxxxxxxxxxxx',
+          toolType: '模板',
+          taskType: '图片',
+          capabilityDirection: '图像识别',
+          businessDirection: '安全',
+          providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+        }
+        ,
+        {
+          description: 'xxxxxxxxxxxxx',
+          toolType: '模板',
+          taskType: '图片',
+          capabilityDirection: '图像识别',
+          businessDirection: '安全',
+          providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+        }
+        // 可继续添加更多项...
+      ];
+      const CapabilityCards: React.FC = () => {
+        return (
+          <Row gutter={[16, 16]}>
+            {capabilities.map((item, index) => (
+              <Col span={8} key={index}>
+                <Card title={`能力 ${index + 1}`} bordered={true}>
+                  <p><strong>能力简介:</strong> {item.description}</p>
+                  <p><strong>工具类型:</strong> {item.toolType}</p>
+                  <p><strong>任务类型:</strong> {item.taskType}</p>
+                  <p><strong>能力方向:</strong> {item.capabilityDirection}</p>
+                  <p><strong>业务方向:</strong> {item.businessDirection}</p>
+                  <p><strong>能力提供:</strong> {item.providerNote}</p>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        );
+      };
 export default AllAbility 

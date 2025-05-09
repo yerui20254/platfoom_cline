@@ -5,12 +5,12 @@ import type { TabsProps } from 'antd';
 import AllAbility from '../components/allability'
 
 const StyledCard = styled(Card)` 
-  height: 280px;
+  height: 240px;
   background:#f5f5f5;
 `;
 const StyledCard2 = styled(Card)`
   width:400px;
-  height: 180px;
+  height: 140px;
   background:#f5f5f5;
   border:1px solid red;
 `;
