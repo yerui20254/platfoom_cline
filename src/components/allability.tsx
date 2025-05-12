@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import { Input,Card, Row, Col } from 'antd';
 import type { GetProps } from 'antd';
+import {useNavigate} from 'react-router-dom'
 type SearchProps = GetProps<typeof Input.Search>;
 
 
@@ -104,6 +105,7 @@ const AllAbility = () => {
                 <button
                   key={option}
                   style={{
+                    marginBottom: '10px',
                     marginRight: '10px',
                     padding: '8px 16px',
                     backgroundColor: isSelected ? '#1890ff' : '#f0f0f0',
@@ -132,6 +134,7 @@ const AllAbility = () => {
           capabilityDirection: '文本理解',
           businessDirection: '电商',
           providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+          link:["xxx",'zzz']
         },
         {
           description: 'xxxxxxxxxxxxx',
@@ -140,6 +143,7 @@ const AllAbility = () => {
           capabilityDirection: '图像识别',
           businessDirection: '安全',
           providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+          link:["xxx",'zzz']
         },
         {
           description: 'xxxxxxxxxxxxx',
@@ -148,6 +152,7 @@ const AllAbility = () => {
           capabilityDirection: '图像识别',
           businessDirection: '安全',
           providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+          link:["xxx",'zzz']
         }
         ,
         {
@@ -157,15 +162,21 @@ const AllAbility = () => {
           capabilityDirection: '图像识别',
           businessDirection: '安全',
           providerNote: '指的是能力提供方，若要使用该能力可以咨询找到的司学',
+          link:["xxx",'zzz']
         }
         // 可继续添加更多项...
       ];
       const CapabilityCards: React.FC = () => {
+        const navigate = useNavigate()
+       const handleCardClick = (item: any) => {
+        // 这里可以根据item的属性构造跳转路径
+        navigate('/ability', { state: {  link: item.link } });
+        };
         return (
           <Row gutter={[16, 16]}>
             {capabilities.map((item, index) => (
               <Col span={8} key={index}>
-                <Card title={`能力 ${index + 1}`} bordered={true}>
+                <Card title={`能力 ${index + 1}`} bordered={true}   onClick={() => handleCardClick(item)}>
                   <p><strong>能力简介:</strong> {item.description}</p>
                   <p><strong>工具类型:</strong> {item.toolType}</p>
                   <p><strong>任务类型:</strong> {item.taskType}</p>

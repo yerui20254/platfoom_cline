@@ -3,6 +3,8 @@ import LoginPage from '../pages/LoginPage.tsx'
 import PageDetail from "../pages/PageDetail.tsx";
 import ContentIndexPage from "../pages/indexPage.tsx"
 import Detail from "../pages/detail.tsx"
+import AbilityContent from "../pages/abilityContent.tsx"
+import AbilityConfig from "../pages/abilityConfig.tsx"
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,14 @@ const router = createBrowserRouter([
     element: <PageDetail />,
     
   },
-
+  {
+    path: '/ability',
+    element: <AbilityContent />,
+  },
+  {
+    path: '/abilityconfig',
+    element: <AbilityConfig />,
+  },
 ])
 
 export default router

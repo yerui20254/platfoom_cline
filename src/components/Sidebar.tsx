@@ -23,7 +23,7 @@ const Sidebar: React.FC = () => {
                 <Menu.Item key="/page3">首页</Menu.Item>
                 <Menu.SubMenu key="page2" icon={<AppstoreOutlined />} title="AI通用能力">
                     <Menu.Item key="/page2/details">能力展示</Menu.Item>
-                    <Menu.Item key="deta">能力配置</Menu.Item>
+                    <Menu.Item key="/abilityconfig">能力配置</Menu.Item>
                 </Menu.SubMenu>
 
                 <Menu.SubMenu key="page2" icon={<UserOutlined />} title="知识插件搜索">
