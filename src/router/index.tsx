@@ -5,6 +5,8 @@ import ContentIndexPage from "../pages/indexPage.tsx"
 import Detail from "../pages/detail.tsx"
 import AbilityContent from "../pages/abilityContent.tsx"
 import AbilityConfig from "../pages/abilityConfig.tsx"
+import AbConfig from '../pages/abConfig.tsx'
+import KnowledgeSearch from '../pages/KnowledgeSearch.tsx'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: 'details',
         element: <Detail />,
+      },
+      {
+        path: 'knowledgesearch',
+        element: <KnowledgeSearch />,
       }
     ]
   },
@@ -33,6 +39,12 @@ const router = createBrowserRouter([
   {
     path: '/abilityconfig',
     element: <AbilityConfig />,
+    
+  },
+  {
+    path: '/abconfig',
+    element: <AbConfig />,
+    
   },
 ])
 

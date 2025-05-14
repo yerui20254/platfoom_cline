@@ -27,7 +27,7 @@ const Sidebar: React.FC = () => {
                 </Menu.SubMenu>
 
                 <Menu.SubMenu key="page2" icon={<UserOutlined />} title="知识插件搜索">
-                    <Menu.Item key="/group2/item1">子菜单 1</Menu.Item>
+                    <Menu.Item key="/page2/knowledgesearch">知识插件搜索</Menu.Item>
                     <Menu.Item key="/group2/item2">子菜单 2</Menu.Item>
                 </Menu.SubMenu>
 

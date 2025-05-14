@@ -3,6 +3,7 @@ import LayOut from "./layOut"
 import { Button,Input,Select,Space, Table,Modal, message ,  } from 'antd';
 import {SearchOutlined} from  '@ant-design/icons'
 import type { SelectProps ,TableProps,PopconfirmProps } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -120,13 +121,18 @@ const AbilityConfig=()=>{
         message.success(`点击了修改：${record.能力名称}`, 3); 
         // 可在这里打开 Modal 并传入 record 进行编辑
       };
+ // 新增能力
+ const navigate = useNavigate();
+ const handleCreate = () => {
+  navigate('/abconfig');
+};
 
     return(
     <LayOut>
         <div>
             <div style={{ padding: '10px' }}>
             能力配置
-            <Button type="primary" style={{ marginLeft: '10px' }}>创建能力</Button>
+            <Button type="primary" style={{ marginLeft: '10px' }} onClick={handleCreate}>创建能力</Button>
             </div>
             <div style={{ padding: '10px' }}>
             能力名称：<Input prefix={<SearchOutlined />} style={{ width: '20%',  marginLeft: '20px' ,marginRight: '20px' ,}}suffix="" />
