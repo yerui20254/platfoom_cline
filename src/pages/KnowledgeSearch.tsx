@@ -1,6 +1,6 @@
 import  { useState } from 'react';
-import { Button, Input, Table,  Flex,  Space,Modal, message ,Radio,  Divider} from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import { Button, Input, Table,  Flex,  Space,Modal, message } from 'antd';
+
 import type { TableColumnsType, TableProps } from 'antd';
 import DynamicFormSection from '../components/DynamicFormSection'
 
@@ -46,6 +46,7 @@ const KnowledgeSearch=()=>{
     ];
     const handleEdit=(record: DataType) =>{
       setModal2Open(true)
+      console.log(record)
     }
     const handleDelete = (record: DataType) => {
       Modal.confirm({
@@ -119,7 +120,9 @@ const KnowledgeSearch=()=>{
           <Button type="primary" onClick={start} disabled={!hasSelected} loading={loading}>
             Reload
           </Button>
-          {hasSelected ? `Selected ${selectedRowKeys.length} items` : null}
+
+          {hasSelected ? (<span>已选择 {selectedRowKeys.length} 队列 <Button type="link">批量编辑</Button></span>) : null}
+          
         </Flex>
       <Table<DataType> rowSelection={rowSelection} columns={columns} dataSource={dataSource} />
     </Flex>
@@ -137,27 +140,24 @@ const KnowledgeSearch=()=>{
     >
       <div style={{height:'800px'}}>
       <h2>插件编辑</h2>
-      <p style={{color:'red'}}>已选XXXX个队列</p>
+      <p style={{color:'red'}}>已选1个队列</p>
       <p style={{color:'red'}}>本次编辑默认覆盖之前的配置，请谨慎配置</p>
 
       <DynamicFormSection 
-  title="知识库来源"
-  onChange={(values) => {
-    console.log('选中值:', values.selectedValue);
-    console.log('输入内容:', values.inputs);
-  }}
-/>
-<DynamicFormSection 
-  title="联网总结来源"
-  onChange={(values) => {
-    console.log('选中值:', values.selectedValue);
-    console.log('输入内容:', values.inputs);
-  }}
-/>
-
-
+        title="知识库来源"
+        onChange={(values) => {
+          console.log('选中值:', values.selectedValue);
+          console.log('输入内容:', values.inputs);
+        }}
+      />
+      <DynamicFormSection 
+        title="联网总结来源"
+        onChange={(values) => {
+          console.log('选中值:', values.selectedValue);
+          console.log('输入内容:', values.inputs);
+        }}
+      />
       </div>
-  
    </Modal>
       </div>
     )

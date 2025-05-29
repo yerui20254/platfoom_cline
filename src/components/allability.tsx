@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Input,Card, Row, Col } from 'antd';
 import type { GetProps } from 'antd';
 import {useNavigate} from 'react-router-dom'
+import { StarOutlined } from '@ant-design/icons';
 type SearchProps = GetProps<typeof Input.Search>;
 
 
@@ -176,7 +177,9 @@ const AllAbility = () => {
           <Row gutter={[16, 16]}>
             {capabilities.map((item, index) => (
               <Col span={8} key={index}>
-                <Card title={`能力 ${index + 1}`} bordered={true}   onClick={() => handleCardClick(item)}>
+                <Card title={<div style={{display:"flex",justifyContent:"space-between",alignItems:'center'}}>
+                  能力{index+1}   
+                  <StarOutlined  style={{right:"-10px"}} onClick={()=>{alert('你点击了收藏'),console.log(item)}}/></div>}>
                   <p><strong>能力简介:</strong> {item.description}</p>
                   <p><strong>工具类型:</strong> {item.toolType}</p>
                   <p><strong>任务类型:</strong> {item.taskType}</p>
