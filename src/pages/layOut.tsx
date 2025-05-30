@@ -18,10 +18,17 @@ const Wrapper2=styled.div`
   min-height: 0; /* 添加这一行解决flex容器溢出问题 */
  & main{ 
    border: 1px solid blue;
-   width: calc(100% - 200px); 
+   width: calc(100% - 300px); 
    margin: 20px;
    overflow-y: auto;
    overflow-x: hidden; /* 只允许垂直滚动 */
+    /* 滚动条隐藏但仍可滚动 */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
  }
 `
 const TopNav=styled.div`
