@@ -139,7 +139,7 @@ const KnowledgeSearch=()=>{
             Reload
           </Button>
 
-          {hasSelected ? (<span>已选择 {selectedRowKeys.length} 队列 <Button type="link">批量编辑</Button></span>) : null}
+          {hasSelected ? (<span>已选择 {selectedRowKeys.length} 队列 <Button type="link" onClick={()=>{alert(`选择了这些${selectedRowKeys}进行批量编辑`)}}>批量编辑</Button></span>) : null}
           
         </Flex>
       <Table<DataType> rowSelection={rowSelection} columns={columns} dataSource={dataSource} />
