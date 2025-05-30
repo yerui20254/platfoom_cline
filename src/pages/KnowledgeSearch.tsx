@@ -20,6 +20,7 @@ const KnowledgeSearch=()=>{
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal2Open, setModal2Open] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [RecordValues, setRecordValues] = useState<Record<string, string>>({});
 
     const handleImportClick = () => {
       console.log('导入队列按钮被点击');
@@ -51,7 +52,9 @@ const KnowledgeSearch=()=>{
     ];
     const handleEdit=(record: DataType) =>{
       setModal2Open(true)
+      console.log('record',record.key)
       console.log(record)
+      setRecordValues(JSON.parse(JSON.stringify(record)));
     }
     const handleDelete = (record: DataType) => {
       Modal.confirm({
@@ -114,6 +117,19 @@ const KnowledgeSearch=()=>{
     const handleCancel = () => {
       setIsModalOpen(false);
     };
+    const ModalEditOk = () =>{
+      //拿到输入的值，拿到选中的值，然后发送请求
+      console.log('选中的值',RecordValues)
+      console.log('输入的值',a);
+      
+      setModal2Open(false)
+    }
+    interface AgentToken {
+      agentId: string;
+      tokenId: string;
+    }
+    
+    const [a, setA] = useState<AgentToken[]>([]);
     return(
         <div style={{ padding: 24 }}>
         {/* 第一行 */}
@@ -144,9 +160,11 @@ const KnowledgeSearch=()=>{
         </Flex>
       <Table<DataType> rowSelection={rowSelection} columns={columns} dataSource={dataSource} />
     </Flex>
+    //编辑弹窗
+    
     <Modal
       open={modal2Open}
-      onOk={() => setModal2Open(false)}
+      onOk={() => ModalEditOk()}
       onCancel={() => setModal2Open(false)}
       transitionName="" // 去除进入动画
       maskTransitionName="" // 去除遮罩动画
@@ -158,7 +176,7 @@ const KnowledgeSearch=()=>{
     >
       <div style={{height:'800px'}}>
       <h2>插件编辑</h2>
-      <p style={{color:'red'}}>已选1个队列</p>
+      <p style={{color:'red'}}>已选{selectedRowKeys.length}个队列</p>
       <p style={{color:'red'}}>本次编辑默认覆盖之前的配置，请谨慎配置</p>
 
       <DynamicFormSection 
@@ -166,6 +184,7 @@ const KnowledgeSearch=()=>{
         onChange={(values) => {
           console.log('选中值:', values.selectedValue);
           console.log('输入内容:', values.inputs);
+          setA(JSON.parse(JSON.stringify(values.inputs)))
         }}
       />
       <DynamicFormSection 
@@ -177,7 +196,7 @@ const KnowledgeSearch=()=>{
       />
       </div>
    </Modal>
-  
+  //导入队列弹窗
    <Modal
   title="队列导入"
   open={isModalOpen}
@@ -214,7 +233,7 @@ const KnowledgeSearch=()=>{
     </Button>
     <Button onClick={handleOk} type="primary">确认导入</Button>
   </div>
-</Modal>
+   </Modal>
 
       </div>
     )

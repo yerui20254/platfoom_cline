@@ -14,7 +14,7 @@ const Wrapper2 = styled.div`
   gap: 30px;
   .Card{
   width:400px;
-  border:1px solid red;
+
   border-radius: 10px 10px 0 0; /* 添加顶部圆角 */
      overflow: hidden; /* 确保圆角效果不被子元素破坏 */
   & img {

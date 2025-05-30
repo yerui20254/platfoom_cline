@@ -4,12 +4,11 @@ import Sidebar from '../components/Sidebar.tsx'
 
 
 const Wrapper=styled.div`
-   border: 1px solid #432243;
    height: calc(100vh - 20px);;
   
    display: flex;
    flex-direction: column;
-   & aside{width: 10vw;border: 1px solid blue}
+   & aside{width: 10vw;}
   
  `
 const Wrapper2=styled.div`
@@ -18,7 +17,7 @@ const Wrapper2=styled.div`
   min-height: 0; /* 添加这一行解决flex容器溢出问题 */
    overflow: hidden;
  & main{ 
-   border: 1px solid blue;
+   
    width: calc(100% - 80px); 
    margin: 20px;
    overflow-y: auto;
@@ -36,7 +35,7 @@ const TopNav=styled.div`
 width: 100%;
 height: 80px;
 top: 0;
-border: 1px solid red`
+`
 
 
 const LayOut = ({ children }: { children: React.ReactNode }) => {

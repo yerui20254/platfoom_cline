@@ -12,7 +12,7 @@ const StyledCard2 = styled(Card)`
   width:400px;
   height: 140px;
   background:#f5f5f5;
-  border:1px solid red;
+ 
 `;
 const CardContainer = styled.div`
   display: flex;
