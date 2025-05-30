@@ -13,7 +13,7 @@ const Sidebar: React.FC = () => {
     const navigate = useNavigate()
 
     return (
-        <Sider width={240} style={{ height: '100vh', background: '#fff' }}>
+        <Sider width={240} style={{ height: '95vh', background: '#fff' }}>
             <Menu
                 mode="inline"
                 defaultOpenKeys={['group1']}
