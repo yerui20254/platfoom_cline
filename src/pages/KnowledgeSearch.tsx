@@ -17,10 +17,15 @@ interface DataType {
 
 
 const KnowledgeSearch=()=>{
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modal2Open, setModal2Open] = useState(false);
+  const [loading, setLoading] = useState(false);
+
     const handleImportClick = () => {
       console.log('导入队列按钮被点击');
       // 这里可以添加实际的导入逻辑
       setDataSource([])
+      showModal();
     };
     //表格相关
     const columns: TableColumnsType<DataType> = [
@@ -65,7 +70,7 @@ const KnowledgeSearch=()=>{
     const internetInputValuesChange = (values: Record<string, string>) => {
       console.log('物联网输入内容变化:', values);
     }
-    const [modal2Open, setModal2Open] = useState(false);
+   
     
     const [dataSource, setDataSource] = useState<DataType[]>(
       Array.from<DataType>({ length: 46 }).map<DataType>((_, i) => ({
@@ -76,7 +81,7 @@ const KnowledgeSearch=()=>{
       }))
     );
     const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-    const [loading, setLoading] = useState(false);
+
     const start = () => {
       setLoading(true);
       // ajax request after empty completing
@@ -95,7 +100,20 @@ const KnowledgeSearch=()=>{
       onChange: onSelectChange,
     };
     const hasSelected = selectedRowKeys.length > 0;
-
+    //导入队列弹窗
+    
+    const showModal = () => {
+      setIsModalOpen(true);
+      setSelectedRowKeys([]);
+    };
+  
+    const handleOk = () => {
+      setIsModalOpen(false);
+    };
+  
+    const handleCancel = () => {
+      setIsModalOpen(false);
+    };
     return(
         <div style={{ padding: 24 }}>
         {/* 第一行 */}
@@ -159,6 +177,45 @@ const KnowledgeSearch=()=>{
       />
       </div>
    </Modal>
+  
+   <Modal
+  title="队列导入"
+  open={isModalOpen}
+  onCancel={handleCancel}
+  closable
+  footer={null} //  禁用默认 footer
+  transitionName=""
+  maskTransitionName=""
+  modalRender={(modal) => (
+    <div style={{ position: 'fixed', right: 10, bottom: 10, width: 800 }}>
+      {modal}
+    </div>
+  )}
+>
+  <div style={{ height: '800px' }}>
+    <div>
+      <h3>说明:</h3>
+      <p>1.仅支持导入操作人有对应 TCS 审核 owner 权限的队列</p>
+      <p>2.历史已导入的数据会自动去重</p>
+      <p>3.导入结果会通过 bot 推送</p>
+      <p>(导入成功状态为 1, 导入失败结果为 0)</p>
+    </div>
+
+    <div>
+      <h3>导入队列</h3>
+      <p>队列 ID</p>
+    </div>
+  </div>
+
+
+  <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 16, }}>
+    <Button onClick={handleCancel} style={{ marginRight: 16 ,width:90}}>
+      取消
+    </Button>
+    <Button onClick={handleOk} type="primary">确认导入</Button>
+  </div>
+</Modal>
+
       </div>
     )
 }
